@@ -8,7 +8,6 @@ import Paginate from '../components/Paginate'
 import ProductCarousel from '../components/ProductCarousel'
 import { listProducts } from '../actions/productActions'
 
-
 function HomeScreen({ history }) {
     const dispatch = useDispatch()
     const productList = useSelector(state => state.productList)
@@ -25,10 +24,11 @@ function HomeScreen({ history }) {
         <div>
             {!keyword && <ProductCarousel />}
 
-            <h1>Latest Products</h1>
+            <h1 className="mt-4 mb-2">Latest Products</h1>
             {loading ? <Loader />
                 : error ? <Message variant='danger'>{error}</Message>
                     :
+                    <>
                     <div>
                         <Row>
                             {products.map(product => (
@@ -39,6 +39,54 @@ function HomeScreen({ history }) {
                         </Row>
                         <Paginate page={page} pages={pages} keyword={keyword} />
                     </div>
+                    <div>
+                        <h1 className="mt-4 mb-2">Electronics</h1>
+                        <Row>
+                            {products.filter(product => product.category.toLowerCase() === "electronics" )
+                            .map(item => (
+                                <Col key={item._id} sm={12} md={6} lg={4} xl={3}>
+                                    <Product product={item} />
+                                </Col>
+                            ))}
+                        </Row>
+                    </div>
+
+                    <div>
+                        <h1 className="mt-4 mb-2">Cameras</h1>
+                        <Row>
+                            {products.filter(product => product.category.toLowerCase() === "camera" )
+                            .map(item => (
+                                <Col key={item._id} sm={12} md={6} lg={4} xl={3}>
+                                    <Product product={item} />
+                                </Col>
+                            ))}
+                        </Row>
+                    </div>
+
+                    <div>
+                        <h1 className="mt-4 mb-2">Laptops</h1>
+                        <Row>
+                            {products.filter(product => product.category.toLowerCase() === "laptop" )
+                            .map(item => (
+                                <Col key={item._id} sm={12} md={6} lg={4} xl={3}>
+                                    <Product product={item} />
+                                </Col>
+                            ))}
+                        </Row>
+                    </div>
+
+                    <div>
+                        <h1 className="mt-4 mb-2">Mobiles</h1>
+                        <Row className="my-1">
+                            {products.filter(product => product.category.toLowerCase() === "mobiles" )
+                            .map(item => (
+                                <Col key={item._id} sm={12} md={6} lg={4} xl={3}>
+                                    <Product product={item} />
+                                </Col>
+                            ))}
+                        </Row>
+                    </div>
+                    </>
             }
         </div>
     )

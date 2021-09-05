@@ -21,7 +21,11 @@ def getProducts(request):
         name__icontains=query).order_by('-createdAt')
 
     page = request.query_params.get('page')
+<<<<<<< HEAD
     paginator = Paginator(products, 35)
+=======
+    paginator = Paginator(products, 15)
+>>>>>>> 1f2fc129b7bc4b6b335fcefd4103556f196f19a8
 
     try:
         products = paginator.page(page)

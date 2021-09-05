@@ -54,7 +54,7 @@ function HomeScreen({ history }) {
                     <div>
                         <h1 className="mt-4 mb-2">Cameras</h1>
                         <Row>
-                            {products.filter(product => product.category.toLowerCase() === "camera" )
+                            {products.filter(product => product.category.toLowerCase() === "cameras" )
                             .map(item => (
                                 <Col key={item._id} sm={12} md={6} lg={4} xl={3}>
                                     <Product product={item} />
@@ -66,7 +66,7 @@ function HomeScreen({ history }) {
                     <div>
                         <h1 className="mt-4 mb-2">Laptops</h1>
                         <Row>
-                            {products.filter(product => product.category.toLowerCase() === "laptop" )
+                            {products.filter(product => product.category.toLowerCase() === "laptops" )
                             .map(item => (
                                 <Col key={item._id} sm={12} md={6} lg={4} xl={3}>
                                     <Product product={item} />
